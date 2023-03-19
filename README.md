@@ -1,33 +1,34 @@
-# PostgreSQL Database Dump
-This repository contains a PostgreSQL database dump, which can be used to recreate a database with the same schema and data as the original database from which it was created.
+  # PostgreSQL Database Dump
+This repository contains a dump of a PostgreSQL database that includes tables for galaxies, stars, planets, and moons. 
+The dump file was created with PostgreSQL version 12.9 using pg_dump.
 
-Prerequisites
-In order to use this dump file, you will need to have PostgreSQL installed on your system. You can download PostgreSQL from the official website.
+  Usage
+To use the dump file to create a new PostgreSQL database, you can follow these steps:
 
-Usage
-To create a new database using this dump file, follow these steps:
+1 Make sure you have PostgreSQL installed on your computer.
+2 Clone this repository to your local machine.
+3 Open a terminal or command prompt and navigate to the cloned repository's directory.
+4 Run the following command to create a new database named "universe" using the dump file:
+bash
+  psql -U <username> -d <database_name> -f universe.sql
+Make sure to replace <username> and <database_name> with your PostgreSQL username and the name you want to give your 
+new database, respectively.
 
-Open a terminal window and navigate to the directory where you have saved this dump file.
+  Database Tables
+The dump file contains the following tables:
 
-Type the following command to create a new database from the dump file:
+  blackhole: Contains information about black holes, including the black hole's ID, name, and the ID of the galaxy it belongs to.
 
-$ createdb -U <username> -O <username> <database_name>
-$ psql -U <username> -d <database_name> -f <dump_file>
-Replace <username> with the name of the PostgreSQL user who will own the new database, <database_name> with the name you want to give to the new database, and <dump_file> with the name of the dump file.
+  galaxy: Contains information about galaxies, including the galaxy's ID, name, description, number of stars in billions, 
+and whether the galaxy is spherical or not.
 
-For example, if the dump file is named universe.sql, the command would be:
+  moon: Contains information about moons, including the moon's ID, name, radius in kilometers, whether it has life or not, 
+and the ID of the planet it belongs to.
 
-$ createdb -U postgres -O postgres universe
-$ psql -U postgres -d universe -f universe.sql
-Once the database has been created, you can connect to it using the following command:
+  planet: Contains information about planets, including the planet's ID, name, number of recorded moons, whether it has 
+life or not, and the ID of the star it orbits.
 
-$ psql -U <username> -d <database_name>
-Database Structure
-This dump file contains a PostgreSQL database with the following structure:
+  star: Contains information about stars, including the star's ID, name, temperature, and distance from Earth.
 
-One database named universe.
-Four tables: blackhole, galaxy, moon, and planet.
-Four sequences: blackhole_blackhole_id_seq, galaxy_galaxy_id_seq, moon_moon_id_seq, and planet_planet_id_seq.
-
-License
-This repository is licensed under the MIT License.
+  License
+This project is licensed under the MIT License - see the LICENSE file for details.
